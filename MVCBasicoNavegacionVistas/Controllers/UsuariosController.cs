@@ -25,6 +25,21 @@ namespace MVCBasicoNavegacionVistas.Controllers
             listUsuarios.Add("Roman");
             listUsuarios.Add("Ricardo");
 
+            //ViewBag.ListaUsuarios=listUsuarios;
+            //TempData["listaUsuarios"]=listUsuarios;
+            Session["listaUsuarios"] = listUsuarios;
+
+
+            return View(listUsuarios);
+
+        }
+        [HttpPost]
+        public ActionResult ListaUsuarios(string selUsuarios)
+        {
+            ViewBag.Nombre=selUsuarios;
+            //List<string> listUsuarios = (List<string>)TempData["listaUsuarios"];
+            List<string> listUsuarios = (List<string>)Session["listaUsuarios"];
+
             return View(listUsuarios);
 
         }

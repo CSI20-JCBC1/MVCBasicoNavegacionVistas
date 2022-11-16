@@ -1,18 +1,31 @@
-﻿
-
-@{
+﻿@{
     ViewBag.Title = "ListaUsuarios";
 }
 
 <h2>ListaUsuarios</h2>
 
-
-@foreach (string usu in Model)
+@using (Html.BeginForm())
 {
-    <ul>
-        <li>@usu</li>
-    </ul>
+    <select name="selUsuarios">
+        @foreach (string usu in Model)
+        {
+
+            <option>@usu</option>
+
+        }
+    </select>
+
+    <br />
+    <br />
+    if (ViewBag.Nombre != null)
+    {
+        <h4 style="color:green">Usuario seleccionado: @ViewBag.Nombre</h4>
+    }
+
+    <br />
+    <button type="submit">Seleccionar Usuarios</button>
 }
 
-@Html.ActionLink("Regresar al index", "Index")
 
+
+@Html.ActionLink("Regresar al index", "Index")
